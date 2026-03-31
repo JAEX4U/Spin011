@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Telegram</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <h2>SPIN Store</h2>
+
+  <!-- ⋮ 3 DOT -->
+  <div class="menu-icon" onclick="toggleMenu()">⋮</div>
+
+  <!-- DROPDOWN -->
+  <div id="dropdownMenu" class="dropdown-menu">
+   
+    <div onclick="goPage('index.html')">Home</div>
+    <div onclick="goPage('tool.html')">Tools</div>
+    <div onclick="goPage('rule.html')">Rules</div>
+    <div onclick="goPage('telegram.html')">Contact</div>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<header>
+
+  <!-- TELEGRAM LOGO -->
+  <div class="telegram-logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg">
+  </div>
+
+  <h1>Connect with Us</h1>
+  <p>Choose how you want to join</p>
+</header>
+
+<!-- CONTENT -->
+<div class="container">
+
+  <div class="card">
+    <h3>Chat Support</h3>
+    <p class="subtitle">Talk directly with Admin</p>
+    <button onclick="openChat()">Open Chat</button>
+  </div>
+
+  <div class="card">
+    <h3>Join Channel</h3>
+    <p class="subtitle">Get updates & offers</p>
+    <button onclick="openChannel()">Join Channel</button>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>© 2026 Store</footer>
+
+<!-- JS -->
+<script>
+function goPage(p){
+  window.location.href = p;
+}
+
+/* ⋮ TOGGLE MENU */
+function toggleMenu() {
+  const menu = document.getElementById("dropdownMenu");
+  if (!menu) return;
+  menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
+}
+
+/* CLOSE MENU OUTSIDE CLICK */
+document.addEventListener("click", function(e) {
+  const menu = document.getElementById("dropdownMenu");
+  const icon = document.querySelector(".menu-icon");
+
+  if (!menu || !icon) return;
+
+  if (!menu.contains(e.target) && !icon.contains(e.target)) {
+    menu.style.display = "none";
+  }
+});
+
+/* TELEGRAM LINKS */
+function openChat(){
+  window.open("https://t.me/Spin011_cc","_blank");
+}
+
+function openChannel(){
+  window.open("https://t.me/YOUR_CHANNEL_LINK","_blank");
+}
+</script>
+
+</body>
+</html>

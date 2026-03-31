@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rules</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <h2>SPIN Store</h2>
+
+  <!-- ⋮ 3 DOT -->
+  <div class="menu-icon" onclick="toggleMenu()">⋮</div>
+
+  <!-- DROPDOWN -->
+  <div id="dropdownMenu" class="dropdown-menu">
+
+    <!-- 🕒 LIVE CLOCK -->
+    <div class="menu-clock" id="menuClock">00:00:00</div>
+    
+    <div onclick="goPage('index.html')">Home</div>
+    <div onclick="goPage('tool.html')">Tools</div>
+    <div onclick="goPage('rule.html')">Rules</div>
+    <div onclick="goPage('telegram.html')">Contact</div>
+  </div>
+</nav>
+
+<!-- MAIN CONTENT -->
+<main style="padding: 20px; text-align: center;">
+  <h1>Rules</h1>
+  <p>Read the following rules</p>
+
+  <ul style="list-style: none; padding: 0;">
+    <li>• Any purchase may be canceled without cause.</li>
+    <li>• We disclaim responsibility for any investigation or inquiry. (use card at your own risk)</li>
+    <li>• No refund policy, One hand deal policy.</li>
+    <li>• Once card has been purchased, it is non-exchangeable.</li>
+  </ul>
+</main>
+
+<!-- FOOTER -->
+<footer>© 2026 Store</footer>
+
+<!-- JS -->
+<script src="script.js"></script>
+
+</body>
+</html>
