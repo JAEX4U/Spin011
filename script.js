@@ -1,7 +1,7 @@
 /* 📦 PRODUCTS */
 const products = [
   {name:'BRELLA', subtitle:'MASTERCARD|DEBIT|CLASSIC,🧘‍♀️ADDED RENT NUMBER 🤌Set Alerts & Block to our email and phone number for Transaction Amount, Internet & Phone transactions, Transactions Outsite U.S. 🤥 Travel Notice', price:'$150', detail:'Balance - 2299.25, STATE - MO, ZIP-64842', category:'D'},
-  {name:'Steam $20', subtitle:'Global Key • Fast', price:'$20', detail:'ZIP', category:'C'},
+  {name:'AMER*** CU', subtitle:'APP,Instant minics, Alerts, Travel center, SSN+DOB', price:'$120', detail:'Available - $35,215.92, STATE - NY, ZIP-13021', category:'C'},
   {name:'Google Play $25', subtitle:'Secure Delivery', price:'$25', detail:'ZIP', category:'D'},
   {name:'IDAHO CENTRAL CREDIT UNION', subtitle:'APP, Alerts, SSN+DOB', price:'$50', detail:'STATE - ID', category:'C'},
   {name:'VISA Primium', subtitle:'AU | BALANCE= $100', price:'$30', detail:'ZIP', category:'D'},
