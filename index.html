@@ -1,86 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>SPIN Store</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>SPIN Store</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- FAVICON -->
-  <link rel="icon" type="image/png" href="https://i.ibb.co/LdTF1vs0/image.png">
+  <!-- FAVICON -->
+  <link rel="icon" type="image/png" href="https://i.ibb.co/LdTF1vs0/image.png">
 
-  <link rel="stylesheet" href="style.css">
-
-  <!-- CLOUDFLARE TURNSTILE SCRIPT -->
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-
-  <style>
-    /* Fullscreen Overlay on Page Load */
-    #captcha-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background-color: #0d0d0d;
-      z-index: 9999;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: #ffffff;
-      font-family: sans-serif;
-    }
-
-    #captcha-overlay h2 {
-      margin-bottom: 20px;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- PAGE LOAD CAPTCHA GATE -->
-<div id="captcha-overlay">
-  <h2>Security Check</h2>
-  <p style="margin-bottom: 15px; color: #ccc;">Please verify you are human to enter SPIN Store.</p>
-
-  <!-- Turnstile Widget with Success Callback -->
-  <div class="cf-turnstile" 
-       data-sitekey="0x4AAAAAAD4pnCdILadn4lpw" 
-       data-callback="onCaptchaSuccess">
-  </div>
-</div>
-
 <!-- NAVBAR -->
 <nav>
-  <div class="top-logo">
-    <img src="https://i.ibb.co/LdTF1vs0/image.png" alt="logo">
-  </div>
+  <!-- 🔝 LOGO -->
+  <div class="top-logo">
+    <img src="https://i.ibb.co/LdTF1vs0/image.png" alt="logo">
+  </div>
 
-  <h2>SPIN Store</h2>
+  <h2>SPIN Store</h2>
 
-  <div class="menu-icon" onclick="toggleMenu()">⋮</div>
+  <!-- ⋮ MENU -->
+  <div class="menu-icon" onclick="toggleMenu()">⋮</div>
 
-  <div id="dropdownMenu" class="dropdown-menu">
-    <div class="menu-clock" id="menuClock">00:00:00</div>
-    <div onclick="goPage('/')">Home</div>
-    <div onclick="goPage('/tool')">Tools</div>
-    <div onclick="goPage('/rule')">Rules</div>
-    <div onclick="goPage('/telegram')">Contact</div>
-  </div>
+  <!-- DROPDOWN -->
+  <div id="dropdownMenu" class="dropdown-menu">
+   
+    <!-- 🕒 LIVE CLOCK -->
+    <div class="menu-clock" id="menuClock">00:00:00</div>
+   
+    <div onclick="goPage('/')">Home</div>
+    <div onclick="goPage('/tool')">Tools</div>
+    <div onclick="goPage('/rule')">Rules</div>
+    <div onclick="goPage('/telegram')">Contact</div>
+  </div>
 </nav>
 
 <!-- HEADER -->
 <header>
-  <h1>SPIN 011 Cards</h1>
+  <h1>SPIN 011 Cards</h1>
 </header>
 
 <!-- CATEGORY -->
 <div class="category-buttons">
-  <button onclick="filterCategory('D')">D Cards</button>
-  <button onclick="filterCategory('C')">C Cards</button>
-  <button onclick="filterCategory('NFC')">NFC Cards</button>
-  <button onclick="filterCategory('OTP')">011 Cards</button>
+  <button onclick="filterCategory('D')">D Cards</button>
+  <button onclick="filterCategory('C')">C Cards</button>
+  <button onclick="filterCategory('NFC')">NFC Cards</button>
+  <button onclick="filterCategory('OTP')">011 Cards</button>
 </div>
 
 <!-- PRODUCTS -->
@@ -94,24 +62,14 @@
 
 <!-- POPUP -->
 <div id="popup" class="popup">
-  <div class="popup-box">
-    <h2>Welcome 👋</h2>
-    <p>Welcome to SPIN Store!</p>
-    <button onclick="closePopup()">OK</button>
-  </div>
+  <div class="popup-box">
+    <h2>Welcome 👋</h2>
+    <p>Welcome to SPIN Store!</p>
+    <button onclick="closePopup()">OK</button>
+  </div>
 </div>
 
 <script src="script.js"></script>
-
-<script>
-  // Hide the verification overlay once CAPTCHA is solved
-  function onCaptchaSuccess(token) {
-    const overlay = document.getElementById('captcha-overlay');
-    if (overlay) {
-      overlay.style.display = 'none';
-    }
-  }
-</script>
 
 </body>
 </html>
