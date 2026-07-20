@@ -10,7 +10,12 @@
 
   <link rel="stylesheet" href="style.css">
 </head>
-
+<script>
+  // Redirect to captcha.html if not verified yet
+  if (sessionStorage.getItem('captchaVerified') !== 'true') {
+    window.location.href = 'captcha.html';
+  }
+</script>
 <body>
 
 <!-- NAVBAR -->
