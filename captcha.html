@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Security Check - SPIN Store</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- FAVICON -->
+  <link rel="icon" type="image/png" href="https://i.ibb.co/LdTF1vs0/image.png">
+
+  <!-- CLOUDFLARE TURNSTILE SCRIPT -->
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #0d0d0d;
+      color: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .captcha-card {
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 40px 30px;
+      max-width: 400px;
+      width: 100%;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    }
+
+    .logo {
+      width: 60px;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #aaa;
+      font-size: 0.95rem;
+      margin-bottom: 25px;
+      line-height: 1.4;
+    }
+
+    .cf-turnstile {
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="captcha-card">
+    <img src="https://i.ibb.co/LdTF1vs0/image.png" alt="SPIN Store Logo" class="logo">
+    <h2>Security Verification</h2>
+    <p>Please complete the security check to continue to <strong>SPIN Store</strong>.</p>
+
+    <!-- Turnstile Widget -->
+    <div class="cf-turnstile" 
+         data-sitekey="0x4AAAAAAD4pnCdILadn4lpw" 
+         data-callback="onCaptchaSuccess">
+    </div>
+  </div>
+
+  <script>
+    // Called automatically when Turnstile verification passes
+    function onCaptchaSuccess(token) {
+      // Mark session as verified
+      sessionStorage.setItem('captchaVerified', 'true');
+      // Redirect to main store page
+      window.location.href = 'index.html';
+    }
+  </script>
+
+</body>
+</html>
