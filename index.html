@@ -12,28 +12,57 @@
 
   <!-- CLOUDFLARE TURNSTILE SCRIPT -->
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
+  <style>
+    /* Fullscreen Overlay on Page Load */
+    #captcha-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: #0d0d0d;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-family: sans-serif;
+    }
+
+    #captcha-overlay h2 {
+      margin-bottom: 20px;
+    }
+  </style>
 </head>
 
 <body>
 
+<!-- PAGE LOAD CAPTCHA GATE -->
+<div id="captcha-overlay">
+  <h2>Security Check</h2>
+  <p style="margin-bottom: 15px; color: #ccc;">Please verify you are human to enter SPIN Store.</p>
+
+  <!-- Turnstile Widget with Success Callback -->
+  <div class="cf-turnstile" 
+       data-sitekey="0x4AAAAAAD4pnCdILadn4lpw" 
+       data-callback="onCaptchaSuccess">
+  </div>
+</div>
+
 <!-- NAVBAR -->
 <nav>
-  <!-- 🔝 LOGO -->
   <div class="top-logo">
     <img src="https://i.ibb.co/LdTF1vs0/image.png" alt="logo">
   </div>
 
   <h2>SPIN Store</h2>
 
-  <!-- ⋮ MENU -->
   <div class="menu-icon" onclick="toggleMenu()">⋮</div>
 
-  <!-- DROPDOWN -->
   <div id="dropdownMenu" class="dropdown-menu">
-    
-    <!-- 🕒 LIVE CLOCK -->
     <div class="menu-clock" id="menuClock">00:00:00</div>
-    
     <div onclick="goPage('/')">Home</div>
     <div onclick="goPage('/tool')">Tools</div>
     <div onclick="goPage('/rule')">Rules</div>
@@ -57,14 +86,6 @@
 <!-- PRODUCTS -->
 <div class="container" id="products"></div>
 
-<!-- CAPTCHA VERIFICATION SECTION -->
-<div class="captcha-container" style="text-align: center; margin: 30px auto;">
-  <form action="#" method="POST">
-    <!-- Cloudflare Turnstile Widget -->
-    <div class="cf-turnstile" data-sitekey="0x4AAAAAAD4pnCdILadn4lpw"></div>
-  </form>
-</div>
-
 <!-- VHS EFFECT -->
 <div class="vhs-line"></div>
 
@@ -81,6 +102,16 @@
 </div>
 
 <script src="script.js"></script>
+
+<script>
+  // Hide the verification overlay once CAPTCHA is solved
+  function onCaptchaSuccess(token) {
+    const overlay = document.getElementById('captcha-overlay');
+    if (overlay) {
+      overlay.style.display = 'none';
+    }
+  }
+</script>
 
 </body>
 </html>
