@@ -170,6 +170,20 @@ background: #330000;
 animation: glitch 0.2s infinite;
 }
 
+.rules-list {
+  list-style-type: disc;
+  list-style-position: inside;
+  padding: 0;
+  text-align: left;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.rules-list li {
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
 /* HEADER */
 header {
 text-align: center;
