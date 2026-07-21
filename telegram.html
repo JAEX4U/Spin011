@@ -2,13 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Official Links - SPIN Store</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- FAVICON -->
   <link rel="icon" type="image/png" href="https://i.ibb.co/LdTF1vs0/image.png">
 
-  <!-- YOUR EXTERNAL CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -19,14 +18,12 @@
     <div class="top-logo">
       <img src="https://i.ibb.co/LdTF1vs0/image.png" alt="SPIN Store Logo">
     </div>
+
     <h2>SPIN Store</h2>
 
-    <!-- MENU ICON -->
     <div class="menu-icon" onclick="toggleMenu()" aria-label="Toggle menu">⋮</div>
 
-    <!-- DROPDOWN -->
     <div id="dropdownMenu" class="dropdown-menu">
-      <!-- LIVE CLOCK -->
       <div class="menu-clock" id="menuClock">00:00:00</div>
 
       <div onclick="goPage('/')">Home</div>
@@ -93,49 +90,13 @@
   <div class="vhs-line"></div>
 
   <!-- FOOTER -->
-  <footer>© 2026 SPIN Store. All Rights Reserved.</footer>
+  <footer>© 2026 Store</footer>
 
-  <!-- JS -->
   <script src="script.js"></script>
   <script>
-    // Live Clock Function
-    function updateClock() {
-      const now = new Date();
-      const hours = String(now.getHours()).padStart(2, '0');
-      const minutes = String(now.getMinutes()).padStart(2, '0');
-      const seconds = String(now.getSeconds()).padStart(2, '0');
-      
-      const clockElement = document.getElementById('menuClock');
-      if (clockElement) {
-        clockElement.textContent = `${hours}:${minutes}:${seconds}`;
-      }
-    }
-    setInterval(updateClock, 1000);
-    updateClock();
-
-    // Toggle Dropdown Menu
-    function toggleMenu() {
-      const dropdown = document.getElementById('dropdownMenu');
-      dropdown.classList.toggle('active');
-    }
-
-    // Navigation & External Link Handlers
-    function goPage(path) {
-      window.location.href = path;
-    }
-
     function openLink(url) {
       window.open(url, "_blank");
     }
-
-    // Close dropdown when clicking outside
-    document.addEventListener('click', function(event) {
-      const dropdown = document.getElementById('dropdownMenu');
-      const menuIcon = document.querySelector('.menu-icon');
-      if (dropdown && menuIcon && !menuIcon.contains(event.target) && !dropdown.contains(event.target)) {
-        dropdown.classList.remove('active');
-      }
-    });
   </script>
 
 </body>
