@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>SPIN Store</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPIN Store</title>
 
   <!-- FAVICON -->
   <link rel="icon" type="image/png" href="https://i.ibb.co/LdTF1vs0/image.png">
@@ -21,64 +21,66 @@
 
 <body>
 
-<!-- NAVBAR -->
-<nav>
-  <!-- 🔝 LOGO -->
-  <div class="top-logo">
-    <img src="https://i.ibb.co/LdTF1vs0/image.png" alt="logo">
+  <!-- NAVBAR -->
+  <nav>
+    <!-- LOGO -->
+    <div class="top-logo">
+      <img src="https://i.ibb.co/LdTF1vs0/image.png" alt="SPIN Store Logo">
+    </div>
+
+    <h2>SPIN Store</h2>
+
+    <!-- MENU ICON -->
+    <div class="menu-icon" onclick="toggleMenu()" aria-label="Toggle menu">⋮</div>
+
+    <!-- DROPDOWN -->
+    <div id="dropdownMenu" class="dropdown-menu">
+      <!-- LIVE CLOCK -->
+      <div class="menu-clock" id="menuClock">00:00:00</div>
+      
+      <div onclick="goPage('/')">Home</div>
+      <div onclick="goPage('/tool')">Tools</div>
+      <div onclick="goPage('/rule')">Rules</div>
+      <div onclick="goPage('/telegram')">Official</div>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header>
+    <h1>SPIN 011 Cards</h1>
+  </header>
+
+  <!-- MAIN CONTENT AREA -->
+  <main>
+    <!-- CATEGORY BUTTONS -->
+    <div class="category-buttons">
+      <button onclick="filterCategory('D')">D Cards</button>
+      <button onclick="filterCategory('C')">C Cards</button>
+      <button onclick="filterCategory('NFC')">NFC Cards</button>
+      <button onclick="filterCategory('OTP')">011 Cards</button>
+    </div>
+
+    <!-- PRODUCTS GRID -->
+    <div class="container" id="products"></div>
+  </main>
+
+  <!-- VHS EFFECT -->
+  <div class="vhs-line"></div>
+
+  <!-- FOOTER -->
+  <footer>© 2026 Store</footer>
+
+  <!-- POPUP -->
+  <div id="popup" class="popup">
+    <div class="popup-box">
+      <h2>Welcome 👋</h2>
+      <p>Welcome to SPIN Store!</p>
+      <button onclick="closePopup()">OK</button>
+    </div>
   </div>
 
-  <h2>SPIN Store</h2>
-
-  <!-- ⋮ MENU -->
-  <div class="menu-icon" onclick="toggleMenu()">⋮</div>
-
-  <!-- DROPDOWN -->
-  <div id="dropdownMenu" class="dropdown-menu">
-    
-    <!-- 🕒 LIVE CLOCK -->
-    <div class="menu-clock" id="menuClock">00:00:00</div>
-    
-    <div onclick="goPage('/')">Home</div>
-    <div onclick="goPage('/tool')">Tools</div>
-    <div onclick="goPage('/rule')">Rules</div>
-    <div onclick="goPage('/telegram')">Official</div>
-  </div>
-</nav>
-
-<!-- HEADER -->
-<header>
-  <h1>SPIN 011 Cards</h1>
-</header>
-
-<!-- CATEGORY -->
-<div class="category-buttons">
-  <button onclick="filterCategory('D')">D Cards</button>
-  <button onclick="filterCategory('C')">C Cards</button>
-  <button onclick="filterCategory('NFC')">NFC Cards</button>
-  <button onclick="filterCategory('OTP')">011 Cards</button>
-</div>
-
-<!-- PRODUCTS -->
-<div class="container" id="products"></div>
-
-<!-- VHS EFFECT -->
-<div class="vhs-line"></div>
-
-<!-- FOOTER -->
-<footer>© 2026 Store</footer>
-
-<!-- POPUP -->
-<div id="popup" class="popup">
-  <div class="popup-box">
-    <h2>Welcome 👋</h2>
-    <p>Welcome to SPIN Store!</p>
-    <button onclick="closePopup()">OK</button>
-  </div>
-</div>
-
-<script src="script.js"></script>
+  <!-- JS -->
+  <script src="script.js"></script>
 
 </body>
 </html>
-
