@@ -3,35 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SPIN Store</title>
+  <title>Official Links - SPIN Store</title>
 
   <!-- FAVICON -->
   <link rel="icon" type="image/png" href="https://i.ibb.co/LdTF1vs0/image.png">
 
-  <!-- GUARD CODE -->
-  <script>
-    // Redirect to captcha.html if not verified yet
-    if (sessionStorage.getItem('captchaVerified') !== 'true') {
-      window.location.href = 'WbRqTzNvYmFpXhKdUaLsJcOrIeWgVbPtQsNmRjLwKxZvYpUsTqPrOoNnLmMkJiHhGgFfEeDdCcBbAaZzYyXxWwVvUuTtSsRrQqPpOoNnNmMmLlKkJjIiHhG.html';
-    }
-  </script>
-
+  <!-- YOUR EXTERNAL CSS -->
   <link rel="stylesheet" href="style.css">
+
+  <!-- DROPDOWN FUNCTIONALITY FALLBACK -->
+  <style>
+    /* Inline safety fallback to guarantee the dropdown works */
+    nav { position: relative; }
+    
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 1rem;
+      z-index: 9999;
+    }
+    
+    .dropdown-menu.active {
+      display: block !important;
+    }
+  </style>
 </head>
 
 <body>
 
   <!-- NAVBAR -->
   <nav>
-    <!-- LOGO -->
     <div class="top-logo">
       <img src="https://i.ibb.co/LdTF1vs0/image.png" alt="SPIN Store Logo">
     </div>
-
     <h2>SPIN Store</h2>
 
     <!-- MENU ICON -->
-    <div class="menu-icon" onclick="toggleMenu()" aria-label="Toggle menu">⋮</div>
+    <div class="menu-icon" onclick="toggleMenu(event)" aria-label="Toggle menu" style="cursor: pointer;">⋮</div>
 
     <!-- DROPDOWN -->
     <div id="dropdownMenu" class="dropdown-menu">
@@ -47,40 +56,109 @@
 
   <!-- HEADER -->
   <header>
-    <h1>SPIN 011 Cards</h1>
+    <h1>Official Directory</h1>
+    <p>Access all SPIN Store official links</p>
   </header>
 
-  <!-- MAIN CONTENT AREA -->
-  <main>
-    <!-- CATEGORY BUTTONS -->
-    <div class="category-buttons">
-      <button onclick="filterCategory('D')">D Cards</button>
-      <button onclick="filterCategory('C')">C Cards</button>
-      <button onclick="filterCategory('NFC')">NFC Cards</button>
-      <button onclick="filterCategory('OTP')">011 Cards</button>
+  <!-- MAIN CONTENT -->
+  <main class="container">
+    
+    <!-- PRIMARY LINKS -->
+    <div class="card">
+      <div class="card-info">
+        <h3>Main Channel</h3>
+        <p class="subtitle">Announcements, updates &amp; offers</p>
+      </div>
+      <button onclick="openLink('https://t.me/spin011')">Join Channel</button>
     </div>
 
-    <!-- PRODUCTS GRID -->
-    <div class="container" id="products"></div>
+    <div class="card">
+      <div class="card-info">
+        <h3>Crew Support</h3>
+        <p class="subtitle">Direct chat &amp; inquiry support</p>
+      </div>
+      <button onclick="openLink('https://t.me/Spin011_cc')">Chat Crew</button>
+    </div>
+
+    <div class="card">
+      <div class="card-info">
+        <h3>Vouches &amp; Drops</h3>
+        <p class="subtitle">Customer reviews &amp; drops</p>
+      </div>
+      <button onclick="openLink('https://t.me/+O9ojKTdxZ04zYzU1')">View Vouches</button>
+    </div>
+
+    <div class="card">
+      <div class="card-info">
+        <h3>Group Chat</h3>
+        <p class="subtitle">Community discussion</p>
+      </div>
+      <button onclick="openLink('https://t.me/+2NJFxljaQJw1MGQ1')">Join Group</button>
+    </div>
+  
+    <!-- BACKUP CONTACT -->
+    <div class="card">
+      <div class="card-info">
+        <h3>Backup Channel</h3>
+        <p class="subtitle">Stay connected if main goes down</p>
+      </div>
+      <button onclick="openLink('https://t.me/+ylOgLUulETM0NmRl')">Join Backup</button>
+    </div>
+
   </main>
 
   <!-- VHS EFFECT -->
   <div class="vhs-line"></div>
 
   <!-- FOOTER -->
-  <footer>© 2026 Store</footer>
-
-  <!-- POPUP -->
-  <div id="popup" class="popup">
-    <div class="popup-box">
-      <h2>Welcome 👋</h2>
-      <p>Welcome to SPIN Store!</p>
-      <button onclick="closePopup()">OK</button>
-    </div>
-  </div>
+  <footer>© 2026 SPIN Store. All Rights Reserved.</footer>
 
   <!-- JS -->
   <script src="script.js"></script>
+  <script>
+    // Live Clock Function
+    function updateClock() {
+      const now = new Date();
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+      
+      const clockElement = document.getElementById('menuClock');
+      if (clockElement) {
+        clockElement.textContent = `${hours}:${minutes}:${seconds}`;
+      }
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // Fixed Toggle Dropdown Function
+    function toggleMenu(event) {
+      if (event) event.stopPropagation(); // Prevents click from instantly triggering document click listener
+      const dropdown = document.getElementById('dropdownMenu');
+      dropdown.classList.toggle('active');
+    }
+
+    // Navigation & External Link Handlers
+    function goPage(path) {
+      window.location.href = path;
+    }
+
+    function openLink(url) {
+      window.open(url, "_blank");
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(event) {
+      const dropdown = document.getElementById('dropdownMenu');
+      const menuIcon = document.querySelector('.menu-icon');
+      
+      if (dropdown && dropdown.classList.contains('active')) {
+        if (!dropdown.contains(event.target) && !menuIcon.contains(event.target)) {
+          dropdown.classList.remove('active');
+        }
+      }
+    });
+  </script>
 
 </body>
 </html>
