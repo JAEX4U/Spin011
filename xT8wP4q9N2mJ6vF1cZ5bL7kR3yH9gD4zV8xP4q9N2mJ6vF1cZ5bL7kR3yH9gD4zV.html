@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Security Check - SPIN Store</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Security Check - SPIN Store</title>
   
   <!-- FAVICON -->
   <link rel="icon" type="image/png" href="https://i.ibb.co/LdTF1vs0/image.png">
@@ -22,7 +22,7 @@
       background-color: #0d0d0d;
       color: #ffffff;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -46,7 +46,7 @@
       margin-bottom: 20px;
     }
 
-    h2 {
+    h1 {
       font-size: 1.5rem;
       margin-bottom: 10px;
     }
@@ -66,9 +66,9 @@
 </head>
 <body>
 
-  <div class="captcha-card">
+  <main class="captcha-card">
     <img src="https://i.ibb.co/LdTF1vs0/image.png" alt="SPIN Store Logo" class="logo">
-    <h2>Security Verification</h2>
+    <h1>Security Verification</h1>
     <p>Please complete the security check to continue to <strong>SPIN Store</strong>.</p>
 
     <!-- Turnstile Widget -->
@@ -76,7 +76,7 @@
          data-sitekey="0x4AAAAAAD4pnCdILadn4lpw" 
          data-callback="onCaptchaSuccess">
     </div>
-  </div>
+  </main>
 
   <script>
     // Called automatically when Turnstile verification passes
