@@ -8,6 +8,7 @@
   <!-- FAVICON -->
   <link rel="icon" type="image/png" href="https://i.ibb.co/LdTF1vs0/image.png">
 
+  <!-- YOUR EXTERNAL CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -50,14 +51,18 @@
   <!-- MAIN CONTENT -->
   <main class="container">
     <div class="card">
-      <h3>Chat Support</h3>
-      <p class="subtitle">Talk directly with Admin</p>
+      <div class="card-info">
+        <h3>Chat Support</h3>
+        <p class="subtitle">Talk directly with Admin</p>
+      </div>
       <button onclick="openChat()">Open Chat</button>
     </div>
 
     <div class="card">
-      <h3>Join Channel</h3>
-      <p class="subtitle">Get updates &amp; offers</p>
+      <div class="card-info">
+        <h3>Join Channel</h3>
+        <p class="subtitle">Get updates &amp; offers</p>
+      </div>
       <button onclick="openChannel()">Join Channel</button>
     </div>
   </main>
@@ -71,6 +76,33 @@
   <!-- JS -->
   <script src="script.js"></script>
   <script>
+    // Live Clock Function
+    function updateClock() {
+      const now = new Date();
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+      
+      const clockElement = document.getElementById('menuClock');
+      if (clockElement) {
+        clockElement.textContent = `${hours}:${minutes}:${seconds}`;
+      }
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // Toggle Dropdown Menu
+    function toggleMenu() {
+      const dropdown = document.getElementById('dropdownMenu');
+      dropdown.classList.toggle('active');
+    }
+
+    // Page Navigation Handler
+    function goPage(path) {
+      window.location.href = path;
+    }
+
+    // Links Handlers
     function openChat() {
       window.open("https://t.me/Spin011_cc", "_blank");
     }
@@ -78,6 +110,15 @@
     function openChannel() {
       window.open("https://t.me/YOUR_CHANNEL_LINK", "_blank");
     }
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(event) {
+      const dropdown = document.getElementById('dropdownMenu');
+      const menuIcon = document.querySelector('.menu-icon');
+      if (dropdown && menuIcon && !menuIcon.contains(event.target) && !dropdown.contains(event.target)) {
+        dropdown.classList.remove('active');
+      }
+    });
   </script>
 
 </body>
