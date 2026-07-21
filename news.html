@@ -1,1 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News &amp; Updates - SPIN Store</title>
 
+  <!-- FAVICON -->
+  <link rel="icon" type="image/png" href="https://i.ibb.co/LdTF1vs0/image.png">
+
+  <!-- EXTERNAL CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="top-logo">
+      <img src="https://i.ibb.co/LdTF1vs0/image.png" alt="SPIN Store Logo">
+    </div>
+
+    <h2>SPIN Store</h2>
+
+    <!-- MENU ICON -->
+    <div class="menu-icon" onclick="toggleMenu()" aria-label="Toggle menu">⋮</div>
+
+    <!-- DROPDOWN -->
+    <div id="dropdownMenu" class="dropdown-menu">
+      <div class="menu-clock" id="menuClock">00:00:00</div>
+
+      <div onclick="goPage('/')">Home</div>
+      <div onclick="goPage('/tool')">Tools</div>
+      <div onclick="goPage('/rule')">Rules</div>
+      <div onclick="goPage('/news')">News</div>
+      <div onclick="goPage('/telegram')">Official</div>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header>
+    <h1>News &amp; Updates</h1>
+    <p>Latest announcements, maintenance alerts, and drops</p>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="container">
+
+    <!-- URGENT / ALERT BANNER CARD -->
+    <div class="card" style="grid-column: 1 / -1; border-color: #ff0000; background: #1a0000;">
+      <div class="card-info">
+        <h3>🚨 PINNED ANNOUNCEMENT</h3>
+        <p class="subtitle" style="color: #ff1a1a; font-weight: bold;">[2026-07-21] Official Channels Operational</p>
+        <p class="details">Make sure to join our backup channel to remain connected during main channel maintenance. Verify all admin usernames before conducting transactions.</p>
+      </div>
+      <button onclick="openLink('https://t.me/+ylOgLUulETM0NmRl')">Join Backup Channel</button>
+    </div>
+
+    <!-- NEWS ITEM 1 -->
+    <div class="card">
+      <div class="card-info">
+        <h3>New Tools Released</h3>
+        <p class="subtitle">Posted on July 20, 2026</p>
+        <p class="details">We have updated our internal web utilities suite. Performance improved across all browser interfaces.</p>
+      </div>
+      <button onclick="goPage('/tool')">Access Tools</button>
+    </div>
+
+    <!-- NEWS ITEM 2 -->
+    <div class="card">
+      <div class="card-info">
+        <h3>Store System Upgrade</h3>
+        <p class="subtitle">Posted on July 15, 2026</p>
+        <p class="details">All auto-delivery scripts have been optimized. Faster processing times and expanded stock availability.</p>
+      </div>
+      <button onclick="openLink('https://t.me/spin011')">Read Full Post</button>
+    </div>
+
+    <!-- NEWS ITEM 3 -->
+    <div class="card">
+      <div class="card-info">
+        <h3>Community Group Live</h3>
+        <p class="subtitle">Posted on July 10, 2026</p>
+        <p class="details">The main chat is open for community discussions, support queries, and direct admin assistance.</p>
+      </div>
+      <button onclick="openLink('https://t.me/+2NJFxljaQJw1MGQ1')">Join Discussion</button>
+    </div>
+
+    <!-- NEWS ITEM 4 -->
+    <div class="card">
+      <div class="card-info">
+        <h3>Vouches &amp; Proofs Log</h3>
+        <p class="subtitle">Posted on July 01, 2026</p>
+        <p class="details">Check customer feedback and recent transaction logs updated daily in our dedicated vouch channel.</p>
+      </div>
+      <button onclick="openLink('https://t.me/+O9ojKTdxZ04zYzU1')">View Feedback</button>
+    </div>
+
+  </main>
+
+  <!-- VHS SCANNING LINE -->
+  <div class="vhs-line"></div>
+
+  <!-- FOOTER -->
+  <footer>© 2026 SPIN Store. All Rights Reserved.</footer>
+
+  <!-- EXTERNAL SCRIPT -->
+  <script src="script.js"></script>
+
+  <!-- INLINE FALLBACK / NAVIGATION LOGIC -->
+  <script>
+    // External Link Helper
+    function openLink(url) {
+      window.open(url, "_blank");
+    }
+
+    // Page Navigation Helper
+    function goPage(path) {
+      window.location.href = path;
+    }
+  </script>
+
+</body>
+</html>
