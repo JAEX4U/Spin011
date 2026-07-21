@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact - SPIN Store</title>
+  <title>Official Links - SPIN Store</title>
 
   <!-- FAVICON -->
   <link rel="icon" type="image/png" href="https://i.ibb.co/LdTF1vs0/image.png">
@@ -44,34 +44,71 @@
       <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram Logo">
     </div>
 
-    <h1>Connect with Us</h1>
-    <p>Choose how you want to join</p>
+    <h1>Official Directory</h1>
+    <p>Access all SPIN Store official links &amp; tools</p>
   </header>
 
   <!-- MAIN CONTENT -->
   <main class="container">
+    
+    <!-- PRIMARY LINKS -->
     <div class="card">
       <div class="card-info">
-        <h3>Chat Support</h3>
-        <p class="subtitle">Talk directly with Admin</p>
+        <h3>Main Channel</h3>
+        <p class="subtitle">Announcements, updates &amp; offers</p>
       </div>
-      <button onclick="openChat()">Open Chat</button>
+      <button onclick="openLink('https://t.me/YOUR_CHANNEL_LINK')">Join Channel</button>
     </div>
 
     <div class="card">
       <div class="card-info">
-        <h3>Join Channel</h3>
-        <p class="subtitle">Get updates &amp; offers</p>
+        <h3>Admin Support</h3>
+        <p class="subtitle">Direct chat &amp; inquiry support</p>
       </div>
-      <button onclick="openChannel()">Join Channel</button>
+      <button onclick="openLink('https://t.me/Spin011_cc')">Chat Admin</button>
     </div>
+
+    <div class="card">
+      <div class="card-info">
+        <h3>Vouches &amp; Proofs</h3>
+        <p class="subtitle">Check customer reviews &amp; feedback</p>
+      </div>
+      <button onclick="openLink('https://t.me/YOUR_VOUCH_LINK')">View Proofs</button>
+    </div>
+
+    <!-- SITE NAVIGATION LINKS -->
+    <div class="card">
+      <div class="card-info">
+        <h3>Store Tools</h3>
+        <p class="subtitle">Access web tools &amp; utilities</p>
+      </div>
+      <button onclick="goPage('/tool')">Open Tools</button>
+    </div>
+
+    <div class="card">
+      <div class="card-info">
+        <h3>Store Rules</h3>
+        <p class="subtitle">Terms of service &amp; guidelines</p>
+      </div>
+      <button onclick="goPage('/rule')">Read Rules</button>
+    </div>
+
+    <!-- BACKUP CONTACT -->
+    <div class="card">
+      <div class="card-info">
+        <h3>Backup Channel</h3>
+        <p class="subtitle">Stay connected if main goes down</p>
+      </div>
+      <button onclick="openLink('https://t.me/YOUR_BACKUP_LINK')">Join Backup</button>
+    </div>
+
   </main>
 
   <!-- VHS EFFECT -->
   <div class="vhs-line"></div>
 
   <!-- FOOTER -->
-  <footer>© 2026 Store</footer>
+  <footer>© 2026 SPIN Store. All Rights Reserved.</footer>
 
   <!-- JS -->
   <script src="script.js"></script>
@@ -97,18 +134,13 @@
       dropdown.classList.toggle('active');
     }
 
-    // Page Navigation Handler
+    // Navigation & External Link Handlers
     function goPage(path) {
       window.location.href = path;
     }
 
-    // Links Handlers
-    function openChat() {
-      window.open("https://t.me/Spin011_cc", "_blank");
-    }
-
-    function openChannel() {
-      window.open("https://t.me/YOUR_CHANNEL_LINK", "_blank");
+    function openLink(url) {
+      window.open(url, "_blank");
     }
 
     // Close dropdown when clicking outside
