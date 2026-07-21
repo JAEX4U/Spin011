@@ -1,52 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Rules</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rules - SPIN Store</title>
+
+  <!-- FAVICON -->
+  <link rel="icon" type="image/png" href="https://i.ibb.co/LdTF1vs0/image.png">
+
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<nav>
-  <h2>SPIN Store</h2>
+  <!-- NAVBAR -->
+  <nav>
+    <div class="top-logo">
+      <img src="https://i.ibb.co/LdTF1vs0/image.png" alt="SPIN Store Logo">
+    </div>
 
-  <!-- ⋮ 3 DOT -->
-  <div class="menu-icon" onclick="toggleMenu()">⋮</div>
+    <h2>SPIN Store</h2>
 
-  <!-- DROPDOWN -->
-  <div id="dropdownMenu" class="dropdown-menu">
+    <!-- MENU ICON -->
+    <div class="menu-icon" onclick="toggleMenu()" aria-label="Toggle menu">⋮</div>
 
-    <!-- 🕒 LIVE CLOCK -->
-    <div class="menu-clock" id="menuClock">00:00:00</div>
-    
-    <div onclick="goPage('/')">Home</div>
-    <div onclick="goPage('/tool')">Tools</div>
-    <div onclick="goPage('/rule')">Rules</div>
-    <div onclick="goPage('/telegram')">Contact</div>
-  </div>
-</nav>
+    <!-- DROPDOWN -->
+    <div id="dropdownMenu" class="dropdown-menu">
+      <!-- LIVE CLOCK -->
+      <div class="menu-clock" id="menuClock">00:00:00</div>
 
-<!-- MAIN CONTENT -->
-<main style="padding: 20px; text-align: center;">
-  <h1>Rules</h1>
-  <p>Read the following rules</p>
+      <div onclick="goPage('/')">Home</div>
+      <div onclick="goPage('/tool')">Tools</div>
+      <div onclick="goPage('/rule')">Rules</div>
+      <div onclick="goPage('/telegram')">Contact</div>
+    </div>
+  </nav>
 
-  <ul style="list-style: none; padding: 0;">
-    <li>• Any purchase may be canceled without cause.</li>
-    <li>• We disclaim responsibility for any investigation or inquiry. (use card at your own risk)</li>
-    <li>• No refund policy, One hand deal policy.</li>
-    <li>• Once card has been purchased, it is non-exchangeable.</li>
-  </ul>
-</main>
+  <!-- MAIN CONTENT -->
+  <main class="container">
+    <h1>Rules</h1>
+    <p>Please read the following rules carefully:</p>
 
-<!-- FOOTER -->
-<footer>© 2026 Store</footer>
+    <ul class="rules-list">
+      <li>Any purchase may be canceled without cause.</li>
+      <li>We disclaim responsibility for any investigation or inquiry (use card at your own risk).</li>
+      <li>No refund policy; one-hand deal policy.</li>
+      <li>Once a card has been purchased, it is non-exchangeable.</li>
+    </ul>
+  </main>
 
-<!-- JS -->
-<script src="script.js"></script>
+  <!-- VHS EFFECT -->
+  <div class="vhs-line"></div>
+
+  <!-- FOOTER -->
+  <footer>© 2026 Store</footer>
+
+  <!-- SCRIPT -->
+  <script src="script.js"></script>
 
 </body>
 </html>
