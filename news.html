@@ -3,33 +3,158 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>News &amp; Updates - SPIN Store</title>
+  <title>News &amp; Topics - SPIN Store</title>
 
   <!-- FAVICON -->
   <link rel="icon" type="image/png" href="https://i.ibb.co/LdTF1vs0/image.png">
 
-  <!-- EXTERNAL CSS -->
+  <!-- YOUR EXTERNAL CSS -->
   <link rel="stylesheet" href="style.css">
 
   <style>
-    /* Image placeholder container styling */
-    .news-img {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-      border: 2px solid #ff1a1a;
-      background: #000;
-      margin-bottom: 10px;
+    /* TWO-COLUMN LAYOUT ADAPTED FROM SCREENSHOT */
+    .dashboard-layout {
+      display: grid;
+      grid-template-columns: 1.8fr 1fr;
+      gap: 20px;
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 0 15px;
     }
 
-    /* Full-width image for the top banner */
-    .news-img-banner {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      border: 2px solid #ff1a1a;
+    /* SECTION HEADERS & DROPDOWN */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 15px;
+    }
+
+    .section-header h2 {
+      margin: 0;
+      font-size: 1.4rem;
+      color: #fff;
+    }
+
+    .filter-select {
       background: #000;
-      margin-bottom: 12px;
+      color: #fff;
+      border: 2px solid #ff1a1a;
+      padding: 4px 8px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    /* PANEL CONTAINER (Matches screenshot card list) */
+    .panel-box {
+      background: #111;
+      border: 2px solid #ff1a1a;
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* NEWS ITEM WITH IMAGE (LEFT PANEL) */
+    .news-row {
+      display: flex;
+      gap: 12px;
+      background: #1a1a1a;
+      border: 1px solid #330000;
+      padding: 10px;
+      align-items: center;
+      position: relative;
+    }
+
+    .news-row:hover {
+      animation: glitch 0.2s infinite;
+      border-color: #ff1a1a;
+    }
+
+    .news-num {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #ff1a1a;
+      min-width: 30px;
+    }
+
+    .news-thumb {
+      width: 75px;
+      height: 60px;
+      object-fit: cover;
+      border: 1px solid #ff1a1a;
+      background: #000;
+      flex-shrink: 0;
+    }
+
+    .news-content {
+      flex-grow: 1;
+    }
+
+    .news-title {
+      font-size: 0.95rem;
+      font-weight: bold;
+      color: #fff;
+      margin-bottom: 5px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .news-meta {
+      font-size: 11px;
+      color: #aaa;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .news-meta span {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* TOPICS ITEM (RIGHT PANEL) */
+    .topic-row {
+      background: #1a1a1a;
+      border: 1px solid #330000;
+      padding: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .topic-row:hover {
+      border-color: #ff1a1a;
+      background: #2a0000;
+      animation: glitch 0.2s infinite;
+    }
+
+    .topic-info h4 {
+      margin: 0 0 4px 0;
+      font-size: 0.9rem;
+      color: #fff;
+    }
+
+    .topic-info p {
+      margin: 0;
+      font-size: 11px;
+      color: #aaa;
+    }
+
+    .topic-action {
+      color: #ff1a1a;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    /* MOBILE RESPONSIVE SWITCH */
+    @media (max-width: 768px) {
+      .dashboard-layout {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -59,81 +184,115 @@
     </div>
   </nav>
 
-  <!-- HEADER -->
-  <header>
-    <h1>News &amp; Updates</h1>
-    <p>Latest announcements, maintenance alerts, and drops</p>
-  </header>
+  <!-- DASHBOARD GRID -->
+  <div class="dashboard-layout">
 
-  <!-- MAIN CONTENT -->
-  <main class="container">
-
-    <!-- URGENT / ALERT BANNER CARD -->
-    <div class="card" style="grid-column: 1 / -1; border-color: #ff0000; background: #1a0000;">
-      <!-- BANNER IMAGE -->
-      <img src="https://via.placeholder.com/800x300/1a0000/ff1a1a?text=PINNED+ANNOUNCEMENT+IMAGE" alt="Announcement Banner" class="news-img-banner">
-
-      <div class="card-info">
-        <h3>🚨 PINNED ANNOUNCEMENT</h3>
-        <p class="subtitle" style="color: #ff1a1a; font-weight: bold;">[2026-07-21] Official Channels Operational</p>
-        <p class="details">Make sure to join our backup channel to remain connected during main channel maintenance. Verify all admin usernames before conducting transactions.</p>
+    <!-- LEFT COLUMN: NEWS WITH IMAGES -->
+    <div>
+      <div class="section-header">
+        <h2>News</h2>
+        <select class="filter-select">
+          <option>Popular</option>
+          <option>Latest</option>
+          <option>Pinned</option>
+        </select>
       </div>
-      <button onclick="openLink('https://t.me/+ylOgLUulETM0NmRl')">Join Backup Channel</button>
+
+      <div class="panel-box">
+
+        <!-- NEWS ITEM 01 -->
+        <div class="news-row">
+          <div class="news-num">01.</div>
+          <img src="https://via.placeholder.com/150/111111/ff1a1a?text=IMG+1" class="news-thumb" alt="News Image">
+          <div class="news-content">
+            <a href="#" onclick="openLink('https://t.me/spin011')" class="news-title">System Update &amp; Auto-Delivery Optimizations</a>
+            <div class="news-meta">
+              <span>💬 30 comments</span>
+              <span>🕒 1 hour ago</span>
+              <span>🔗 spin011.com</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- NEWS ITEM 02 -->
+        <div class="news-row">
+          <div class="news-num">02.</div>
+          <img src="https://via.placeholder.com/150/111111/ff1a1a?text=IMG+2" class="news-thumb" alt="News Image">
+          <div class="news-content">
+            <a href="#" onclick="openLink('https://t.me/Spin011_cc')" class="news-title">New Support Desk Operating Hours Announced</a>
+            <div class="news-meta">
+              <span>💬 15 comments</span>
+              <span>🕒 2 hours ago</span>
+              <span>🔗 telegram.org</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- NEWS ITEM 03 -->
+        <div class="news-row">
+          <div class="news-num">03.</div>
+          <img src="https://via.placeholder.com/150/111111/ff1a1a?text=IMG+3" class="news-thumb" alt="News Image">
+          <div class="news-content">
+            <a href="#" onclick="openLink('https://t.me/+O9ojKTdxZ04zYzU1')" class="news-title">Vouches &amp; Proofs Log Updated Daily</a>
+            <div class="news-meta">
+              <span>💬 42 comments</span>
+              <span>🕒 4 hours ago</span>
+              <span>🔗 t.me/vouches</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
 
-    <!-- NEWS ITEM 1 -->
-    <div class="card">
-      <!-- IMAGE SHOW PLACE -->
-      <img src="https://via.placeholder.com/400x200/111111/ff1a1a?text=New+Tools+Image" alt="News Image" class="news-img">
-
-      <div class="card-info">
-        <h3>New Tools Released</h3>
-        <p class="subtitle">Posted on July 20, 2026</p>
-        <p class="details">We have updated our internal web utilities suite. Performance improved across all browser interfaces.</p>
+    <!-- RIGHT COLUMN: TOPICS (Replaces My Favorites) -->
+    <div>
+      <div class="section-header">
+        <h2>Topics</h2>
       </div>
-      <button onclick="goPage('/tool')">Access Tools</button>
+
+      <div class="panel-box">
+
+        <!-- TOPIC ITEM 1 -->
+        <div class="topic-row" onclick="goPage('/tool')">
+          <div class="topic-info">
+            <h4># Web Utilities &amp; Tools</h4>
+            <p>💬 148 posts &amp; guides</p>
+          </div>
+          <div class="topic-action">→</div>
+        </div>
+
+        <!-- TOPIC ITEM 2 -->
+        <div class="topic-row" onclick="openLink('https://t.me/+2NJFxljaQJw1MGQ1')">
+          <div class="topic-info">
+            <h4># Community Discussions</h4>
+            <p>💬 312 active chat threads</p>
+          </div>
+          <div class="topic-action">→</div>
+        </div>
+
+        <!-- TOPIC ITEM 3 -->
+        <div class="topic-row" onclick="goPage('/rule')">
+          <div class="topic-info">
+            <h4># Store Guidelines &amp; Rules</h4>
+            <p>💬 Terms, TOS &amp; Safety</p>
+          </div>
+          <div class="topic-action">→</div>
+        </div>
+
+        <!-- TOPIC ITEM 4 -->
+        <div class="topic-row" onclick="openLink('https://t.me/+ylOgLUulETM0NmRl')">
+          <div class="topic-info">
+            <h4># Backup &amp; Status Alerts</h4>
+            <p>💬 Server &amp; uptime status</p>
+          </div>
+          <div class="topic-action">→</div>
+        </div>
+
+      </div>
     </div>
 
-    <!-- NEWS ITEM 2 -->
-    <div class="card">
-      <!-- IMAGE SHOW PLACE -->
-      <img src="https://via.placeholder.com/400x200/111111/ff1a1a?text=System+Upgrade+Image" alt="News Image" class="news-img">
-
-      <div class="card-info">
-        <h3>Store System Upgrade</h3>
-        <p class="subtitle">Posted on July 15, 2026</p>
-        <p class="details">All auto-delivery scripts have been optimized. Faster processing times and expanded stock availability.</p>
-      </div>
-      <button onclick="openLink('https://t.me/spin011')">Read Full Post</button>
-    </div>
-
-    <!-- NEWS ITEM 3 -->
-    <div class="card">
-      <!-- IMAGE SHOW PLACE -->
-      <img src="https://via.placeholder.com/400x200/111111/ff1a1a?text=Group+Chat+Image" alt="News Image" class="news-img">
-
-      <div class="card-info">
-        <h3>Community Group Live</h3>
-        <p class="subtitle">Posted on July 10, 2026</p>
-        <p class="details">The main chat is open for community discussions, support queries, and direct admin assistance.</p>
-      </div>
-      <button onclick="openLink('https://t.me/+2NJFxljaQJw1MGQ1')">Join Discussion</button>
-    </div>
-
-    <!-- NEWS ITEM 4 -->
-    <div class="card">
-      <!-- IMAGE SHOW PLACE -->
-      <img src="https://via.placeholder.com/400x200/111111/ff1a1a?text=Vouches+Image" alt="News Image" class="news-img">
-
-      <div class="card-info">
-        <h3>Vouches &amp; Proofs Log</h3>
-        <p class="subtitle">Posted on July 01, 2026</p>
-        <p class="details">Check customer feedback and recent transaction logs updated daily in our dedicated vouch channel.</p>
-      </div>
-      <button onclick="openLink('https://t.me/+O9ojKTdxZ04zYzU1')">View Feedback</button>
-    </div>
-
-  </main>
+  </div>
 
   <!-- VHS SCANNING LINE -->
   <div class="vhs-line"></div>
