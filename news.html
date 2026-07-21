@@ -10,6 +10,28 @@
 
   <!-- EXTERNAL CSS -->
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* Image placeholder container styling */
+    .news-img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border: 2px solid #ff1a1a;
+      background: #000;
+      margin-bottom: 10px;
+    }
+
+    /* Full-width image for the top banner */
+    .news-img-banner {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border: 2px solid #ff1a1a;
+      background: #000;
+      margin-bottom: 12px;
+    }
+  </style>
 </head>
 
 <body>
@@ -48,6 +70,9 @@
 
     <!-- URGENT / ALERT BANNER CARD -->
     <div class="card" style="grid-column: 1 / -1; border-color: #ff0000; background: #1a0000;">
+      <!-- BANNER IMAGE -->
+      <img src="https://via.placeholder.com/800x300/1a0000/ff1a1a?text=PINNED+ANNOUNCEMENT+IMAGE" alt="Announcement Banner" class="news-img-banner">
+
       <div class="card-info">
         <h3>🚨 PINNED ANNOUNCEMENT</h3>
         <p class="subtitle" style="color: #ff1a1a; font-weight: bold;">[2026-07-21] Official Channels Operational</p>
@@ -58,6 +83,9 @@
 
     <!-- NEWS ITEM 1 -->
     <div class="card">
+      <!-- IMAGE SHOW PLACE -->
+      <img src="https://via.placeholder.com/400x200/111111/ff1a1a?text=New+Tools+Image" alt="News Image" class="news-img">
+
       <div class="card-info">
         <h3>New Tools Released</h3>
         <p class="subtitle">Posted on July 20, 2026</p>
@@ -68,6 +96,9 @@
 
     <!-- NEWS ITEM 2 -->
     <div class="card">
+      <!-- IMAGE SHOW PLACE -->
+      <img src="https://via.placeholder.com/400x200/111111/ff1a1a?text=System+Upgrade+Image" alt="News Image" class="news-img">
+
       <div class="card-info">
         <h3>Store System Upgrade</h3>
         <p class="subtitle">Posted on July 15, 2026</p>
@@ -78,6 +109,9 @@
 
     <!-- NEWS ITEM 3 -->
     <div class="card">
+      <!-- IMAGE SHOW PLACE -->
+      <img src="https://via.placeholder.com/400x200/111111/ff1a1a?text=Group+Chat+Image" alt="News Image" class="news-img">
+
       <div class="card-info">
         <h3>Community Group Live</h3>
         <p class="subtitle">Posted on July 10, 2026</p>
@@ -88,6 +122,9 @@
 
     <!-- NEWS ITEM 4 -->
     <div class="card">
+      <!-- IMAGE SHOW PLACE -->
+      <img src="https://via.placeholder.com/400x200/111111/ff1a1a?text=Vouches+Image" alt="News Image" class="news-img">
+
       <div class="card-info">
         <h3>Vouches &amp; Proofs Log</h3>
         <p class="subtitle">Posted on July 01, 2026</p>
@@ -107,14 +144,12 @@
   <!-- EXTERNAL SCRIPT -->
   <script src="script.js"></script>
 
-  <!-- INLINE FALLBACK / NAVIGATION LOGIC -->
+  <!-- NAVIGATION LOGIC -->
   <script>
-    // External Link Helper
     function openLink(url) {
       window.open(url, "_blank");
     }
 
-    // Page Navigation Helper
     function goPage(path) {
       window.location.href = path;
     }
