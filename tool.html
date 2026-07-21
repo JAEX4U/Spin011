@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Tools</title>
+  <title>Tools - SPIN Store</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- FAVICON -->
@@ -13,43 +13,55 @@
 
 <body>
 
-<!-- NAVBAR -->
-<nav>
-  <div class="top-logo">
-    <img src="https://i.ibb.co/LdTF1vs0/image.png" alt="logo">
-  </div>
+  <!-- NAVBAR -->
+  <nav>
+    <div class="top-logo">
+      <img src="https://i.ibb.co/LdTF1vs0/image.png" alt="SPIN Store Logo">
+    </div>
 
-  <h2>SPIN Store</h2>
+    <h2>SPIN Store</h2>
 
-  <div class="menu-icon" onclick="toggleMenu()">⋮</div>
+    <div class="menu-icon" onclick="toggleMenu()" aria-label="Toggle menu">⋮</div>
 
-  <div id="dropdownMenu" class="dropdown-menu">
-    <div class="menu-clock" id="menuClock">00:00:00</div>
+    <div id="dropdownMenu" class="dropdown-menu">
+      <div class="menu-clock" id="menuClock">00:00:00</div>
 
-    <div onclick="goPage('/')">Home</div>
-    <div onclick="goPage('/tool')">Tools</div>
-    <div onclick="goPage('/rule')">Rules</div>
-    <div onclick="goPage('/telegram')">Contact</div>
-  </div>
-</nav>
+      <div onclick="goPage('/')">Home</div>
+      <div onclick="goPage('/tool')">Tools</div>
+      <div onclick="goPage('/rule')">Rules</div>
+      <div onclick="goPage('/telegram')">Contact</div>
+    </div>
+  </nav>
 
-<!-- HEADER -->
-<header>
-  <h1>Tools</h1>
-</header>
+  <!-- HEADER -->
+  <header>
+    <h1>Tools</h1>
+  </header>
 
-<!-- 🔥 EMPTY CONTENT AREA -->
-<div class="container" id="tools-area">
-  <!-- You will add tools here -->
-</div>
+  <!-- CONTENT AREA -->
+  <main class="container" id="tools-area">
+    <!-- Example Tool Card 1 -->
+    <div class="tool-card">
+      <h3>Tool Name 1</h3>
+      <p>Short description of what this tool does.</p>
+      <button onclick="goPage('/tool/1')">Open Tool</button>
+    </div>
 
-<!-- VHS EFFECT -->
-<div class="vhs-line"></div>
+    <!-- Example Tool Card 2 -->
+    <div class="tool-card">
+      <h3>Tool Name 2</h3>
+      <p>Short description of what this tool does.</p>
+      <button onclick="goPage('/tool/2')">Open Tool</button>
+    </div>
+  </main>
 
-<!-- FOOTER -->
-<footer>© 2026 Store</footer>
+  <!-- VHS EFFECT -->
+  <div class="vhs-line"></div>
 
-<script src="script.js"></script>
+  <!-- FOOTER -->
+  <footer>© 2026 Store</footer>
+
+  <script src="script.js"></script>
 
 </body>
 </html>
