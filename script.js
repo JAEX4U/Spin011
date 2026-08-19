@@ -1,6 +1,6 @@
 /* 📦 PRODUCTS */
 const products = [
-  {name:'BRELLA', subtitle:'MASTERCARD|DEBIT|CLASSIC,🧘‍♀️ADDED RENT NUMBER 🤌Set Alerts & Block to our email and phone number for Transaction Amount, Internet & Phone transactions, Trans[...]
+  {name:'BRELLA', subtitle:'MASTERCARD|DEBIT|CLASSIC,🧘‍♀️ADDED RENT NUMBER 🤌Set Alerts & Block to our email and phone number for Transaction Amount, Internet & Phone transactions, Trans[...]'},
   {name:'AMER*** CU', subtitle:'APP,Instant minics, Alerts, Travel center, SSN+DOB', price:'$120', detail:'Available - $35,215.92, STATE - NY, ZIP-13021', category:'C'},
   {name:'Google Play $25', subtitle:'Secure Delivery', price:'$25', detail:'ZIP', category:'D'},
   {name:'IDAHO CENTRAL CREDIT UNION', subtitle:'APP, Alerts, SSN+DOB', price:'$50', detail:'STATE - ID', category:'C'},
@@ -110,15 +110,17 @@ function updateClock() {
 setInterval(updateClock, 1000);
 updateClock();
 
-/* 😈 HORROR SYSTEM */
+/* SAFETY FLAGS */
+// Disable any harmful/annoying UX by default
+const ENABLE_JUMPSCARE = false;
+
+/* MESSAGES (sanitized) */
 const horrorMessages = [
-  "go back nigga...",
-  "go back nigga...",
-  "go back nigga...",
-  "go back nigga...",
-  "go back nigga...",
-  "go back nigga...",
-  "go back nigga..."
+  "Please proceed carefully...",
+  "Tip: use filters to find cards faster",
+  "Explore categories to discover offerings",
+  "Reminder: check descriptions before purchase",
+  "Need help? Contact support"
 ];
 
 let lastMessageY = 0;
@@ -136,13 +138,14 @@ window.addEventListener("scroll", () => {
   document.body.style.textShadow =
     `${intensity}px 0 red, ${-intensity}px 0 blue`;
 
-  /* 💀 MESSAGES AFTER 22000px */
-  if (y > 32000 && y - lastMessageY > 800) {
+  /* 💀 MESSAGES AFTER 22000px (skip if user prefers reduced motion) */
+  const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!prefersReducedMotion && y > 32000 && y - lastMessageY > 800) {
     spawnMessage();
     lastMessageY = y;
   }
 
-  /* 😱 JUMPSCARE AT 100000px */
+  /* 😱 JUMPSCARE AT 100000px (disabled by default) */
   if (y > 100000 && !jumpScareTriggered) {
     jumpScareTriggered = true;
     triggerJumpScare();
@@ -160,6 +163,9 @@ window.addEventListener("scroll", () => {
 
 /* 💀 FLOAT MESSAGE */
 function spawnMessage() {
+  const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReducedMotion) return; // don't spawn moving messages
+
   const msg = document.createElement("div");
 
   msg.innerText = horrorMessages[
@@ -169,10 +175,11 @@ function spawnMessage() {
   msg.style.position = "absolute";
   msg.style.left = Math.random() * 80 + "%";
   msg.style.top = window.scrollY + window.innerHeight + "px";
-  msg.style.color = "red";
+  msg.style.color = "#ffdddd";
   msg.style.fontSize = "14px";
-  msg.style.opacity = "0.7";
+  msg.style.opacity = "0.9";
   msg.style.pointerEvents = "none";
+  msg.style.zIndex = 9999;
 
   document.body.appendChild(msg);
 
@@ -201,36 +208,39 @@ function addDeepMessage() {
   document.body.appendChild(deep);
 }
 
-/* 😱 JUMPSCARE */
+/* 😱 JUMPSCARE (NO-OP unless ENABLE_JUMPSCARE = true) */
 function triggerJumpScare() {
-  const scare = document.createElement("div");
+  if (!ENABLE_JUMPSCARE) return;
 
-  scare.innerHTML = `
-    <div style="
-      position:fixed;
-      top:0;
-      left:0;
-      width:100%;
-      height:100%;
-      background:black;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      z-index:99999;
-    ">
-      <img src="https://i.ibb.co/4pDNDk1/horror-face.png"
-           style="width:300px; animation: scareZoom 0.2s infinite;">
-    </div>
-  `;
+  // Build overlay safely via DOM methods
+  const overlay = document.createElement('div');
+  overlay.style.position = 'fixed';
+  overlay.style.top = '0';
+  overlay.style.left = '0';
+  overlay.style.width = '100%';
+  overlay.style.height = '100%';
+  overlay.style.background = 'black';
+  overlay.style.display = 'flex';
+  overlay.style.justifyContent = 'center';
+  overlay.style.alignItems = 'center';
+  overlay.style.zIndex = '99999';
 
-  document.body.appendChild(scare);
+  const img = document.createElement('img');
+  img.src = 'https://i.ibb.co/4pDNDk1/horror-face.png';
+  img.alt = '';
+  img.style.width = '300px';
+  img.style.animation = 'scareZoom 0.2s infinite';
+
+  overlay.appendChild(img);
+  document.body.appendChild(overlay);
 
   /* screen flash */
-  document.body.style.background = "black";
+  const previousBackground = document.body.style.background;
+  document.body.style.background = 'black';
 
   setTimeout(() => {
-    scare.remove();
-    document.body.style.background = "";
+    overlay.remove();
+    document.body.style.background = previousBackground;
   }, 2000);
 }
 
