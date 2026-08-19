@@ -1,6 +1,6 @@
 /* 📦 PRODUCTS */
 const products = [
-  {name:'BRELLA', subtitle:'MASTERCARD|DEBIT|CLASSIC,🧘‍♀️ADDED RENT NUMBER 🤌Set Alerts & Block to our email and phone number for Transaction Amount, Internet & Phone transactions, Transactions Outsite U.S. 🤥 Travel Notice', price:'$150', detail:'Balance - 2299.25, STATE - MO, ZIP-64842', category:'D'},
+  {name:'BRELLA', subtitle:'MASTERCARD|DEBIT|CLASSIC,🧘‍♀️ADDED RENT NUMBER 🤌Set Alerts & Block to our email and phone number for Transaction Amount, Internet & Phone transactions, Trans[...]
   {name:'AMER*** CU', subtitle:'APP,Instant minics, Alerts, Travel center, SSN+DOB', price:'$120', detail:'Available - $35,215.92, STATE - NY, ZIP-13021', category:'C'},
   {name:'Google Play $25', subtitle:'Secure Delivery', price:'$25', detail:'ZIP', category:'D'},
   {name:'IDAHO CENTRAL CREDIT UNION', subtitle:'APP, Alerts, SSN+DOB', price:'$50', detail:'STATE - ID', category:'C'},
@@ -232,4 +232,45 @@ function triggerJumpScare() {
     scare.remove();
     document.body.style.background = "";
   }, 2000);
-      }
+}
+
+// Animated headline — words rotate every 2.5s, characters stagger-in 50ms each
+function startHeroHeadline() {
+  const heroWords = ["Cards", "Logs", "Bots"];
+  const target = document.getElementById("heroWord");
+  if (!target) return;
+
+  let wordIndex = 0;
+
+  function renderWord(word) {
+    target.innerHTML = "";
+    target.classList.remove("hero-word--enter");
+
+    // force reflow so the animation can replay on each tick
+    void target.offsetWidth;
+
+    const chars = Array.from(word);
+    chars.forEach((char, i) => {
+      const span = document.createElement("span");
+      span.className = "hero-char";
+      span.textContent = char;
+      span.style.animationDelay = `${i * 50}ms`;
+      target.appendChild(span);
+    });
+
+    target.classList.add("hero-word--enter");
+  }
+
+  renderWord(heroWords[wordIndex]);
+
+  setInterval(() => {
+    wordIndex = (wordIndex + 1) % heroWords.length;
+    renderWord(heroWords[wordIndex]);
+  }, 2500);
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", startHeroHeadline);
+} else {
+  startHeroHeadline();
+}
