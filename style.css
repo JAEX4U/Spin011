@@ -316,3 +316,81 @@ footer {
     width: 90px;
   }
 }
+
+
+/* ANIMATED HEADER HEADLINE */
+header {
+  text-align: center;
+  padding: 60px 20px 40px;
+}
+
+.hero-headline {
+  margin: 0;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 0.9;
+  text-transform: none;
+  color: #111;
+}
+
+.hero-line-1 {
+  display: block;
+  font-size: clamp(2.5rem, 8vw, 6rem);
+}
+
+.hero-line-2 {
+  display: block;
+  font-size: clamp(2.5rem, 8vw, 6rem);
+  margin-top: 0.2em;
+}
+
+.hero-static {
+  margin-right: 0.25em;
+}
+
+.hero-words-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.hero-underline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.08em;
+  height: 0.18em;
+  background: currentColor;
+  opacity: 0.12;
+  border-radius: 0.05em;
+  pointer-events: none;
+}
+
+.hero-word {
+  display: inline-flex;
+}
+
+.hero-word .hero-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.4em);
+}
+
+.hero-word--enter .hero-char {
+  animation: heroCharIn 480ms cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+
+@keyframes heroCharIn {
+  0%   { opacity: 0; transform: translateY(0.4em); }
+  60%  { opacity: 1; transform: translateY(-0.05em); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* respect users who prefer no motion */
+@media (prefers-reduced-motion: reduce) {
+  .hero-word .hero-char {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
