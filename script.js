@@ -240,33 +240,53 @@ function startHeroHeadline() {
   const target = document.getElementById("heroWord");
   if (!target) return;
 
+  const prefersReducedMotion =
+    window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // If the user prefers reduced motion, show the first word statically
+  if (prefersReducedMotion) {
+    target.textContent = heroWords[0];
+    return;
+  }
+
   let wordIndex = 0;
+  let intervalId = null;
 
   function renderWord(word) {
-    target.innerHTML = "";
+    // Clear previous content and remove enter class to allow replay
+    target.textContent = "";
     target.classList.remove("hero-word--enter");
 
-    // force reflow so the animation can replay on each tick
+    // Force reflow so the animation restarts reliably
     void target.offsetWidth;
 
-    const chars = Array.from(word);
-    chars.forEach((char, i) => {
+    // Append each character as a span, staggered by 50ms, hidden from SRs
+    Array.from(word).forEach((char, i) => {
       const span = document.createElement("span");
       span.className = "hero-char";
       span.textContent = char;
       span.style.animationDelay = `${i * 50}ms`;
+      span.setAttribute("aria-hidden", "true");
       target.appendChild(span);
     });
 
+    // Trigger the CSS animation
     target.classList.add("hero-word--enter");
   }
 
+  // initial render
   renderWord(heroWords[wordIndex]);
 
-  setInterval(() => {
+  intervalId = setInterval(() => {
     wordIndex = (wordIndex + 1) % heroWords.length;
     renderWord(heroWords[wordIndex]);
   }, 2500);
+
+  // cleanup on unload to avoid leaks
+  window.addEventListener("beforeunload", () => {
+    if (intervalId) clearInterval(intervalId);
+  });
 }
 
 if (document.readyState === "loading") {
